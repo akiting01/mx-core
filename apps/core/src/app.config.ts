@@ -112,7 +112,7 @@ export const MONGO_DB = {
 export const REDIS = {
   host: argv.redis_host || process.env.redis_host,
   port: argv.redis_port || process.env.redis_port,
-  password: argv.redis_password || null,
+  password: argv.redis_password || process.env.redis_password,
   ttl: null,
   httpCacheTTL: 15,
   max: 120,
