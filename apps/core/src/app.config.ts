@@ -98,10 +98,10 @@ export const CROSS_DOMAIN = {
 
 export const MONGO_DB = {
   dbName: argv.collection_name || (DEMO_MODE ? 'mx-space_demo' : 'mx-space'),
-  host: argv.db_host || '127.0.0.1',
-  port: argv.db_port || 27017,
-  user: argv.db_user || '',
-  password: argv.db_password || '',
+  host: argv.db_host || process.env.db_host,
+  port: argv.db_port || process.env.db_port,
+  user: argv.db_user || process.env.db_user,
+  password: argv.db_password || process.env.db_password,
   get uri() {
     const userPassword =
       this.user && this.password ? `${this.user}:${this.password}@` : ''
@@ -110,8 +110,8 @@ export const MONGO_DB = {
 }
 
 export const REDIS = {
-  host: argv.redis_host || 'localhost',
-  port: argv.redis_port || 6379,
+  host: argv.redis_host || process.env.redis_host,
+  port: argv.redis_port || process.env.redis_port,
   password: argv.redis_password || null,
   ttl: null,
   httpCacheTTL: 15,
